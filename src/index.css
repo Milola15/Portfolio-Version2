@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+/* ===== COULEURS PERSONNALISÉES ===========================
+   On définit nos couleurs bordeaux et or une seule fois.
+   Tailwind ne connaît pas ces couleurs par défaut,
+   donc on les ajoute avec @theme.
+========================================================= */
+@theme {
+  --color-bx-dark:   #0d0306;
+  --color-bx-deep:   #2a0810;
+  --color-bx:        #6B1A2A;
+  --color-bx-light:  #8B2A3E;
+  --color-gold:      #c9a84c;
+  --color-gold-2:    #e2c06a;
+  --color-gold-3:    #f5d98b;
+}
+
+/* ===== CURSEUR PERSONNALISÉ =============================
+   Tailwind ne peut pas gérer cursor:none sur body
+   ni les animations @keyframes complexes,
+   donc on les écrit ici en CSS pur.
+========================================================= */
+body { cursor: none; }
+
+/* Animation du carrousel de compétences */
+@keyframes scrollLeft {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes scrollRight {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+.animate-scroll-left {
+  animation: scrollLeft 22s linear infinite;
+}
+.animate-scroll-right {
+  animation: scrollRight 25s linear infinite;
+}
+.animate-scroll-left:hover,
+.animate-scroll-right:hover {
+  animation-play-state: paused;
+}
+
+/* Blobs animés en arrière-plan */
+@keyframes drift {
+  from { transform: scale(1) translate(0, 0); }
+  to   { transform: scale(1.2) translate(15px, -15px); }
+}
+.animate-drift { animation: drift 6s ease-in-out infinite alternate; }
+
+/* Particules flottantes */
+@keyframes floatUp {
+  0%   { transform: translateY(110%); opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 0.4; }
+  100% { transform: translateY(-80px) translateX(20px); opacity: 0; }
+}
+.animate-float { animation: floatUp linear infinite; }
