@@ -120,7 +120,7 @@ function Hero({ isLight }) {
 
           {/* Bouton télécharger CV */}
           
-           <a href="/cv-eunice.pdf"
+           <a href="CV_EUNICE_OGUNEMI.pdf"
             download
             className={`cursor-none px-6 py-2.5 rounded-lg text-sm font-bold border
               bg-transparent transition-all duration-200
@@ -139,7 +139,7 @@ function Hero({ isLight }) {
         {[
           { n: '7+', label: 'Langages maîtrisés' },
           { n: '3+', label: 'Projets réalisés'   },
-          { n: '2+', label: 'Ans de formation'   },
+          { n: '3+', label: 'Ans de formation'   },
         ].map((stat) => (
           <div key={stat.label} className={`
             rounded-2xl border px-3 py-4 text-center transition-all duration-500

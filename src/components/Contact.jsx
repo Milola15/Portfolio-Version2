@@ -118,18 +118,18 @@ function Contact({ isLight }) {
             {[
               {
                 icon:  <FiMail size={16} />,
-                label: 'eunice@email.com',
-                href:  'mailto:eunice@email.com',
+                label: 'euniceogunemi@gmail.com',
+                href:  'mailto:euniceogunemi@gmail.com',
               },
               {
                 icon:  <FiGithub size={16} />,
-                label: 'github.com/eunice',
-                href:  'https://github.com',
+                label: 'github.com/Milola15',
+                href:  'https://github.com/Milola15',
               },
               {
                 icon:  <FiLinkedin size={16} />,
-                label: 'linkedin.com/in/eunice',
-                href:  'https://linkedin.com',
+                label: 'linkedin.com/in/EuniceOgunemi',
+                href:  'https://www.linkedin.com/in/EuniceOgunemi',
               },
             ].map((link) => (
               
@@ -187,7 +187,7 @@ function Contact({ isLight }) {
                 name="email"
                 value={form.email}
                 onChange={handleChange}
-                placeholder="eunice@email.com"
+                placeholder="euniceogunemi@gmail.com"
                 className={inputClass}
               />
             </div>

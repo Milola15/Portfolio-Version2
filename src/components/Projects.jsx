@@ -14,7 +14,7 @@ function Projects({ isLight }) {
       title:   'Milola Wigs',
       desc:    'E-commerce complet de perruques avec catalogue produits, panier, commandes et dashboard admin.',
       tags:    ['Next.js 16', 'Prisma', 'Tailwind', 'PostgreSQL'],
-      github:  '#',
+      github:  'https://github.com/Milola15/Milola-wigs',
       live:    '#',
       status:  'wip',   // wip = work in progress (en cours)
       gold:    'Next.js 16',
@@ -47,11 +47,34 @@ function Projects({ isLight }) {
       title:   'Portfolio v1',
       desc:    'Premier portfolio personnel en React avec design bordeaux, compétences et projets.',
       tags:    ['React', 'CSS', 'Vite'],
-      github:  '#',
+      github:  'https://github.com/Milola15/Portfolio-react',
       live:    '#',
       status:  'done',
       gold:    'React',
     },
+    {
+      id:      5,
+      icon:    '🌐',
+      title:   'Tableau de Bord',
+      desc:    "Application web de gestion d'inscription pour un établissement scolaire : interface intuitive, base de données MySQL et logique PHP côté serveur",
+      tags:    ['React', 'CSS', 'Vite'],
+      github: "https://github.com/Milola15/Application-d-inscription-scolaire",
+      live:    '#',
+      status:  'done',
+      gold:    'React',
+    },
+    {
+      id:      5,
+      icon:    '🌐',
+      title:   'Application web fullstack de sondage et de vote',
+      desc:    "es utilisateurs peuvent créer un compte, participer aux sondages et consulter les résultats sous forme de pourcentages et de barres de progression. Stack technique : React, Tailwind CSS ,Express.js ,MySQL ,REST API",
+      tags:    ['React', 'CSS', 'Vite'],
+      github: "https://github.com/Milola15/Application-Sondage",
+      image:"cap-challenge.png",
+      live:    '#',
+      status:  'done',
+      gold:    'React',
+    }
   ]
 
   return (

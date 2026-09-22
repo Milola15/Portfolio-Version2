@@ -10,17 +10,17 @@ function Footer({ isLight }) {
   const socials = [
     {
       icon:  <FiGithub size={18} />,
-      href:  'https://github.com',
+      href:  'https://github.com/Milola15',
       label: 'GitHub',
     },
     {
       icon:  <FiLinkedin size={18} />,
-      href:  'https://linkedin.com',
+      href:  'https://www.linkedin.com/in/EuniceOgunemi',
       label: 'LinkedIn',
     },
     {
       icon:  <FiMail size={18} />,
-      href:  'mailto:eunice@email.com',
+      href:  'mailto:euniceogunemi@gmail.com',
       label: 'Email',
     },
   ]

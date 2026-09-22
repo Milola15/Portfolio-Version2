@@ -1,11 +1,18 @@
 // About.jsx — section "À propos" avec ta photo et ta présentation
 
 import { motion } from 'framer-motion'
+import {
+  MapPin,
+  GraduationCap,
+  Briefcase,
+  Globe,
+  User, // fallback si la photo ne charge pas
+} from 'lucide-react'
 
 // Importe ta photo ici — place-la dans src/assets/
 // Pour l'instant on met un placeholder
 // ✅ Remplace par cette seule ligne
-const photo = 'https://placehold.co/150x150/3d0f20/c9a84c?text=E'
+const photo = ''
 
 function About({ isLight }) {
 
@@ -16,10 +23,10 @@ function About({ isLight }) {
   })
 
   const infos = [
-    { icon: '📍', label: 'Abidjan, CI'    },
-    { icon: '🎓', label: 'En formation'   },
-    { icon: '💼', label: 'Open to work'   },
-    { icon: '🌐', label: 'FR / EN'        },
+    { icon: <MapPin />, label: 'Abidjan, CI'    },
+    { icon: <GraduationCap />, label: 'En formation'   },
+    { icon: <Briefcase />, label: 'Open to work'   },
+    { icon: <Globe />, label: 'FR / EN'        },
   ]
 
   return (

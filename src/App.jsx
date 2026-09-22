@@ -34,9 +34,9 @@ function App() {
     <BrowserRouter>
       <div className={`min-h-screen relative overflow-hidden transition-colors duration-500
         ${isLight
-          ? 'bg-[#fdf5f7]'
-          : 'bg-gradient-to-br from-[#0d0306] via-[#2a0810] to-[#1a0a04]'
-        }`}
+  ? 'bg-[#f5e8eb]'
+  : 'bg-gradient-to-br from-[#1a0508] via-[#3d0f1e] to-[#2a0810]'
+  }`}
       >
         <Cursor  isLight={isLight} />
         <Navbar  isLight={isLight} toggleTheme={toggleTheme} />
