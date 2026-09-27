@@ -1,13 +1,16 @@
 import { motion } from 'framer-motion'
 import {
   FaHtml5, FaCss3Alt, FaJs, FaReact,
-  FaJava, FaPhp, FaGitAlt
+  FaJava, FaPhp, FaGitAlt, FaDocker,
+  FaRobot
 } from 'react-icons/fa'
 import {
   SiLaravel, SiMysql, SiFirebase,
-  SiTailwindcss, SiNextdotjs, SiC, SiFigma
+  SiTailwindcss, SiNextdotjs, SiC,
+  SiPostman, SiAndroidstudio,
 } from 'react-icons/si'
 import { VscVscode } from 'react-icons/vsc'
+import { BsStars } from 'react-icons/bs'
 
 function Skills({ isLight }) {
 
@@ -15,12 +18,12 @@ function Skills({ isLight }) {
     {
       title: 'Front-end',
       skills: [
-        { icon: <FaReact       className="text-[#61dafb]" />,  name: 'React',      featured: true  },
+        { icon: <FaReact       className="text-[#61dafb]" />, name: 'React',      featured: true  },
         { icon: <SiNextdotjs   className={isLight ? 'text-[#1a0508]' : 'text-white'} />, name: 'Next.js', featured: true },
-        { icon: <FaHtml5       className="text-[#e34f26]" />,  name: 'HTML',       featured: false },
-        { icon: <FaCss3Alt     className="text-[#264de4]" />,  name: 'CSS',        featured: false },
-        { icon: <FaJs          className="text-[#f7df1e]" />,  name: 'JavaScript', featured: false },
-        { icon: <SiTailwindcss className="text-[#38bdf8]" />,  name: 'Tailwind',   featured: true  },
+        { icon: <FaHtml5       className="text-[#e34f26]" />, name: 'HTML',       featured: false },
+        { icon: <FaCss3Alt     className="text-[#264de4]" />, name: 'CSS',        featured: false },
+        { icon: <FaJs          className="text-[#f7df1e]" />, name: 'JavaScript', featured: false },
+        { icon: <SiTailwindcss className="text-[#38bdf8]" />, name: 'Tailwind',   featured: true  },
       ]
     },
     {
@@ -37,33 +40,32 @@ function Skills({ isLight }) {
     {
       title: 'Outils',
       skills: [
-        { icon: <FaGitAlt  className="text-[#f05032]" />, name: 'Git/GitHub', featured: false },
-        { icon: <VscVscode className="text-[#007acc]" />, name: 'VS Code',    featured: false },
-        { icon: <SiFigma   className="text-[#f24e1e]" />, name: 'WampServer',      featured: false },
-        { icon: <SiFigma   className="text-[#f24e1e]" />, name: 'Potsman',      featured: false },
-        { icon: <SiFigma   className="text-[#f24e1e]" />, name: 'Android Studio',      featured: false },
-        { icon: <SiFigma   className="text-[#f24e1e]" />, name: 'Docker',      featured: false }
+        { icon: <FaGitAlt        className="text-[#f05032]" />, name: 'Git/GitHub',     featured: false },
+        { icon: <VscVscode       className="text-[#007acc]" />, name: 'VS Code',        featured: false },
+        { icon: <FaDocker        className="text-[#2496ed]" />, name: 'WampServer',     featured: false },
+        { icon: <SiPostman       className="text-[#ff6c37]" />, name: 'Postman',        featured: false },
+        { icon: <SiAndroidstudio className="text-[#3ddc84]" />, name: 'Android Studio', featured: false },
+        { icon: <FaDocker        className="text-[#2496ed]" />, name: 'Docker',         featured: false },
       ]
     },
     {
       title: 'Outils IA',
       skills: [
-        { icon: <FaGitAlt  className="text-[#f05032]" />, name: 'Claude', featured: false },
-        { icon: <VscVscode className="text-[#007acc]" />, name: 'Gemini',    featured: false },
-        { icon: <SiFigma   className="text-[#f24e1e]" />, name: 'Antigravity',      featured: false },
-        { icon: <SiFigma   className="text-[#f24e1e]" />, name: 'Cursor',      featured: false },
-        { icon: <SiFigma   className="text-[#f24e1e]" />, name: 'Codex',      featured: false }
+        { icon: <FaRobot        className="text-[#c9a84c]" />, name: 'Claude', featured: false },
+        { icon: <FaRobot        className="text-[#c9a84c]" />, name: 'Codex', featured: false },
+        { icon: <BsStars        className="text-[#c9a84c]" />, name: 'Antigravity', featured: false },
+        { icon: <BsStars        className="text-[#c9a84c]" />, name: 'Cursor', featured: false },
       ]
-    }
+    },
   ]
 
   return (
     <section id="skills" className="px-6 py-14 max-w-5xl mx-auto">
 
-      {/* TITRE DE SECTION */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         className="flex items-center gap-3 mb-8"
       >
@@ -83,34 +85,37 @@ function Skills({ isLight }) {
         />
       </motion.div>
 
-      {/* CATÉGORIES */}
       <div className="flex flex-col gap-8">
         {categories.map((cat, catIndex) => (
           <motion.div
             key={cat.title}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5, delay: catIndex * 0.1 }}
           >
-            {/* Titre catégorie */}
             <p className={`text-xs font-bold uppercase tracking-[2px] mb-3
-              transition-colors duration-500
               ${isLight ? 'text-[#8a4050]' : 'text-white/40'}`}>
               — {cat.title}
             </p>
 
-            {/* Badges */}
             <div className="flex flex-wrap gap-2.5">
               {cat.skills.map((skill, i) => (
                 <motion.div
                   key={skill.name}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1   }}
-                  transition={{ duration: 0.3, delay: catIndex * 0.1 + i * 0.05 }}
+                  initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.3,
+                    delay: catIndex * 0.1 + i * 0.06,
+                    type: 'spring',
+                    stiffness: 200
+                  }}
+                  whileHover={{ y: -4, scale: 1.05, transition: { duration: 0.2 } }}
                   className={`
                     flex items-center gap-2 px-4 py-2 rounded-xl border
-                    cursor-none transition-all duration-300
-                    hover:-translate-y-1 hover:shadow-lg
+                    cursor-none transition-colors duration-300
                     ${skill.featured
                       ? isLight
                         ? 'bg-gradient-to-r from-[#c9a84c]/15 to-[#6B1A2A]/08 border-[#c9a84c]/45 shadow-sm'
@@ -122,14 +127,13 @@ function Skills({ isLight }) {
                   `}
                 >
                   <span className="text-xl">{skill.icon}</span>
-                  <span className={`text-sm font-semibold transition-colors duration-500
+                  <span className={`text-sm font-semibold
                     ${skill.featured
                       ? isLight ? 'text-[#7a5010]' : 'text-[#f5d98b]'
                       : isLight ? 'text-[#1a0508]'  : 'text-white/85'
                     }`}>
                     {skill.name}
                   </span>
-                  {/* Étoile sur les technos principales */}
                   {skill.featured && (
                     <span className="text-[#c9a84c] text-xs">✦</span>
                   )}

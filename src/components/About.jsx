@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import photo from '../assets/img2.png'
+import { FiMapPin, FiBook, FiBriefcase, FiGlobe, FiDownload } from 'react-icons/fi'
 
 function About({ isLight }) {
 
@@ -10,10 +11,10 @@ function About({ isLight }) {
   })
 
   const infos = [
-    { icon: '📍', label: 'Abidjan, CI'  },
-    { icon: '🎓', label: 'En formation' },
-    { icon: '💼', label: 'Open to work' },
-    { icon: '🌐', label: 'FR / EN'      },
+    { icon: <FiMapPin    size={16} />, label: 'Abidjan, CI'  },
+    { icon: <FiBook     size={16} />, label: 'En formation' },
+    { icon: <FiBriefcase size={16} />, label: 'Open to work' },
+    { icon: <FiGlobe    size={16} />, label: 'FR / EN'      },
   ]
 
   return (
@@ -41,7 +42,7 @@ function About({ isLight }) {
       {/* LAYOUT 2 COLONNES */}
       <div className="flex flex-col md:flex-row gap-8 items-stretch">
 
-        {/* ===== COLONNE GAUCHE — PHOTO AVEC TEXTE PAR DESSUS ===== */}
+        {/* ===== COLONNE GAUCHE — PHOTO ===== */}
         <motion.div {...fadeUp(0.1)}
           className="relative w-full md:w-[45%] flex-shrink-0 rounded-2xl overflow-hidden min-h-[360px]">
 
@@ -56,25 +57,24 @@ function About({ isLight }) {
             src={photo}
             alt="Eunice Ogunemi"
             className="absolute inset-0 w-full h-full object-cover object-top rounded-2xl z-10"
-            onError={(e) => {
-              e.target.style.display = 'none'
-            }}
+            onError={(e) => { e.target.style.display = 'none' }}
           />
 
-          {/* Dégradé sombre en bas pour lire le texte */}
+          {/* Dégradé sombre en bas */}
           <div className="absolute inset-0 z-20 rounded-2xl
             bg-gradient-to-t from-[#0d0306]/90 via-[#0d0306]/30 to-transparent" />
 
-          {/* TEXTE PAR DESSUS LA PHOTO */}
+          {/* TEXTE PAR DESSUS */}
           <div className="absolute bottom-0 left-0 right-0 z-30 p-5">
 
             {/* Badge disponible */}
             <div className="inline-flex items-center gap-2 mb-3
-              px-3 py-1 rounded-full border text-xs font-bold
+              px-3 py-1.5 rounded-full border text-xs font-bold
               bg-[#0d0306]/60 border-[#c9a84c]/40 text-[#c9a84c]
               backdrop-blur-md">
+              {/* Petit point vert animé */}
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-              Disponible pour un stage
+              Disponible pour un stage ou emploi
             </div>
 
             {/* Nom */}
@@ -113,7 +113,7 @@ function About({ isLight }) {
             </p>
           </div>
 
-          {/* Info pills */}
+          {/* Info pills avec icônes react-icons */}
           <div className="grid grid-cols-2 gap-3">
             {infos.map((info, i) => (
               <motion.div
@@ -124,11 +124,14 @@ function About({ isLight }) {
                 className={`flex items-center gap-3 px-4 py-3 rounded-xl border
                   transition-all duration-500
                   ${isLight
-                    ? 'bg-white border-[#c9a84c]/30 shadow-sm'
+                    ? 'bg-white border-[#c9a84c]/25 shadow-sm'
                     : 'bg-white/06 border-white/12'
                   }`}
               >
-                <span className="text-lg">{info.icon}</span>
+                {/* Icône en or */}
+                <span className="text-[#c9a84c] flex-shrink-0">
+                  {info.icon}
+                </span>
                 <span className={`text-sm font-semibold transition-colors duration-500
                   ${isLight ? 'text-[#1a0508]' : 'text-white/85'}`}>
                   {info.label}
@@ -136,6 +139,23 @@ function About({ isLight }) {
               </motion.div>
             ))}
           </div>
+
+          {/* Bouton télécharger CV avec icône */}
+          <motion.a
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0  }}
+            transition={{ duration: 0.4, delay: 0.6 }}
+            href="CV_Eunice_Ogunemi.pdf"
+            download
+            className="cursor-none self-start flex items-center gap-2
+              px-6 py-2.5 rounded-xl text-sm font-bold text-white
+              bg-gradient-to-r from-[#6B1A2A] to-[#c9a84c]
+              shadow-lg hover:opacity-90 transition-opacity duration-200"
+          >
+            <FiDownload size={15} />
+            Télécharger mon CV
+          </motion.a>
+
         </motion.div>
       </div>
     </section>
