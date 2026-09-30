@@ -1,45 +1,91 @@
-// Timeline.jsx — ton parcours de formation affiché en ligne verticale
-// Chaque étape est une carte avec une date, un titre et des tags
-
 import { motion } from 'framer-motion'
+import {
+  FiCode, FiBook, FiAward, FiBriefcase,
+  FiTarget, FiCpu
+} from 'react-icons/fi'
 
 function Timeline({ isLight }) {
 
-  // Tes étapes de parcours dans un tableau
   const steps = [
     {
       id:     1,
+      icon:   <FiCode size={14} />,
       year:   '2022',
+      type:   'Formation',
       title:  'Début en développement web',
-      desc:   'Découverte du HTML, CSS et bases de la programmation.',
-      tags:   ['HTML', 'CSS'],
-      active: false,  // étape passée
+      desc:   'Découverte du HTML, CSS et bases de la programmation. Premiers pas dans le monde du développement.',
+      tags:   ['HTML', 'CSS', 'Bases'],
+      active: false,
     },
     {
       id:     2,
+      icon:   <FiBook size={14} />,
       year:   '2023',
+      type:   'Formation',
       title:  'JavaScript, Java & PHP',
-      desc:   'Apprentissage de la POO et du scripting front-end. Premiers projets concrets.',
-      tags:   ['JavaScript', 'Java', 'PHP'],
+      desc:   'Apprentissage de la programmation orientée objet, du scripting front-end et du développement back-end. Premiers projets concrets.',
+      tags:   ['JavaScript', 'Java', 'PHP', 'POO'],
       active: false,
     },
     {
       id:     3,
-      year:   '2024 — EN COURS',
-      title:  'React, Laravel & Next.js',
-      desc:   'Montée en compétences sur les frameworks modernes. Réalisation de Milola Wigs.',
-      tags:   ['React', 'Laravel', 'Next.js', 'Firebase'],
-      active: true,   // étape actuelle — point doré lumineux
+      icon:   <FiAward size={14} />,
+      year:   '2024 — 2025',
+      type:   'Diplôme',
+      title:  'BTS Informatique — Développeur d\'Application',
+      desc:   'Admissibilité BTS Informatique Développeur d\'Application à Pigier Plateau. Montée en compétences sur les frameworks modernes.',
+      tags:   ['Pigier Plateau', 'BTS', 'React', 'Laravel'],
+      active: false,
     },
     {
       id:     4,
-      year:   '2025 — OBJECTIF 🎯',
-      title:  'Stage développeur full-stack',
-      desc:   'Recherche active d\'un stage pour mettre mes compétences en pratique en entreprise.',
-      tags:   ['Full-Stack', 'Open to work'],
+      icon:   <FiBriefcase size={14} />,
+      year:   'Jan — Mai 2026',
+      type:   'Stage',
+      title:  'Développeuse d\'Applications — SOTRA',
+      desc:   'Développement front-end d\'une application mobile WinDev Mobile pour la gestion des équipements embarqués des bus de la SOTRA à Abidjan.',
+      tags:   ['WinDev Mobile', 'Front-end', 'SOTRA', 'Mobile'],
+      active: true,
+    },
+    {
+      id:     5,
+      icon:   <FiCpu size={14} />,
+      year:   '2026 — 2027',
+      type:   'Formation',
+      title:  'Licence Pro — Réseau Génie Logiciel',
+      desc:   'En cours de Licence Professionnelle Réseau Génie Logiciel (3e année) à Pigier Plateau. Approfondissement des compétences full-stack et réseaux.',
+      tags:   ['Pigier Plateau', 'Licence Pro', 'Réseaux', 'Génie Logiciel'],
+      active: true,
+    },
+    {
+      id:     6,
+      icon:   <FiTarget size={14} />,
+      year:   '2027 — OBJECTIF',
+      type:   'Objectif',
+      title:  'Développeuse Full-Stack confirmée',
+      desc:   'Obtenir mon diplôme de Licence et intégrer une entreprise ambitieuse en tant que développeuse full-stack.',
+      tags:   ['Full-Stack', 'Diplôme', 'CDI'],
       active: true,
     },
   ]
+
+  // Couleur du badge selon le type d'étape
+  function getBadgeStyle(type, isLight) {
+    switch(type) {
+      case 'Diplôme':
+        return 'bg-[#c9a84c]/15 border-[#c9a84c]/40 text-[#c9a84c]'
+      case 'Stage':
+        return 'bg-green-500/15 border-green-500/40 text-green-400'
+      case 'Objectif':
+        return isLight
+          ? 'bg-[#6B1A2A]/10 border-[#6B1A2A]/30 text-[#6B1A2A]'
+          : 'bg-[#8B2A3E]/20 border-[#8B2A3E]/40 text-[#f5d98b]'
+      default:
+        return isLight
+          ? 'bg-[#6B1A2A]/08 border-[#6B1A2A]/20 text-[#6B1A2A]'
+          : 'bg-white/08 border-white/20 text-white/60'
+    }
+  }
 
   return (
     <section id="timeline" className="px-6 py-14 max-w-3xl mx-auto">
@@ -47,31 +93,35 @@ function Timeline({ isLight }) {
       {/* TITRE DE SECTION */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         className="flex items-center gap-3 mb-10"
       >
         <span className={`text-xs uppercase tracking-[3px] font-bold whitespace-nowrap
-          ${isLight ? 'text-[#6B1A2A]' : 'text-[#c9a84c]'}`}>
+          bg-clip-text text-transparent bg-gradient-to-r
+          ${isLight
+            ? 'from-[#c9a84c] to-[#8B2A3E]'
+            : 'from-[#c9a84c] to-[#f5d98b]'
+          }`}>
           Mon parcours
         </span>
         <div className={`flex-1 h-px bg-gradient-to-r
           ${isLight
-            ? 'from-[#6B1A2A]/30 to-transparent'
+            ? 'from-[#c9a84c]/50 to-transparent'
             : 'from-[#c9a84c]/40 to-transparent'
           }`}
         />
       </motion.div>
 
-      {/* LISTE DES ÉTAPES */}
-      {/* relative + padding-left pour laisser la place à la ligne verticale */}
-      <div className="relative pl-6">
+      {/* TIMELINE */}
+      <div className="relative pl-8">
 
-        {/* LIGNE VERTICALE qui relie toutes les étapes */}
-        <div className={`absolute left-[7px] top-2 bottom-2 w-px bg-gradient-to-b
+        {/* LIGNE VERTICALE */}
+        <div className={`absolute left-[15px] top-2 bottom-2 w-px bg-gradient-to-b
           ${isLight
-            ? 'from-[#6B1A2A] to-[#6B1A2A]/10'
-            : 'from-[#c9a84c] to-[#c9a84c]/10'
+            ? 'from-[#c9a84c] via-[#6B1A2A] to-[#6B1A2A]/10'
+            : 'from-[#c9a84c] via-[#c9a84c]/50 to-[#c9a84c]/10'
           }`}
         />
 
@@ -79,56 +129,61 @@ function Timeline({ isLight }) {
           <motion.div
             key={step.id}
             initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x:  0  }}
-            transition={{ duration: 0.5, delay: index * 0.15 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
             className="relative mb-8 last:mb-0"
-            // last:mb-0 = pas de marge en bas pour le dernier élément
           >
 
-            {/* POINT sur la ligne verticale */}
+            {/* POINT avec icône */}
             <div className={`
-              absolute -left-6 top-1 w-[15px] h-[15px] rounded-full border-2 z-10
+              absolute -left-8 top-3 w-8 h-8 rounded-full
+              flex items-center justify-center border-2 z-10
               transition-all duration-500
               ${step.active
                 ? isLight
-                  // Actif en mode jour : bordeaux lumineux
-                  ? 'bg-gradient-to-br from-[#6B1A2A] to-[#8B2A3E] border-[#6B1A2A] shadow-[0_0_12px_rgba(107,26,42,0.5)]'
-                  // Actif en mode nuit : or lumineux
-                  : 'bg-gradient-to-br from-[#c9a84c] to-[#e2c06a] border-[#c9a84c] shadow-[0_0_12px_rgba(201,168,76,0.6)]'
+                  ? 'bg-gradient-to-br from-[#c9a84c] to-[#6B1A2A] border-[#c9a84c] text-white shadow-[0_0_14px_rgba(201,168,76,0.5)]'
+                  : 'bg-gradient-to-br from-[#c9a84c] to-[#e2c06a] border-[#c9a84c] text-[#1a0508] shadow-[0_0_14px_rgba(201,168,76,0.6)]'
                 : isLight
-                  // Inactif en mode jour
-                  ? 'bg-[#e8c4ca] border-[#6B1A2A]/25'
-                  // Inactif en mode nuit
-                  : 'bg-[#3d0f20] border-[#c9a84c]/25'
+                  ? 'bg-white border-[#6B1A2A]/25 text-[#6B1A2A]'
+                  : 'bg-[#3d0f20] border-[#c9a84c]/25 text-white/50'
               }
-            `} />
+            `}>
+              {step.icon}
+            </div>
 
-            {/* ANNÉE */}
-            <p className={`text-[11px] font-bold tracking-widest mb-1.5
-              transition-colors duration-500
-              ${step.active
-                ? isLight ? 'text-[#6B1A2A]' : 'text-[#c9a84c]'
-                : isLight ? 'text-[#8a4050]'  : 'text-white/40'
-              }`}
-            >
-              {step.year}
-            </p>
-
-            {/* CARTE */}
+            {/* CONTENU */}
             <div className={`
-              p-4 rounded-xl border transition-all duration-500
+              ml-2 p-4 rounded-2xl border transition-all duration-500
               hover:translate-x-1
               ${step.active
                 ? isLight
-                  ? 'bg-[#6B1A2A]/06 border-[#6B1A2A]/20'
-                  : 'bg-[#c9a84c]/08 border-[#c9a84c]/25'
+                  ? 'bg-white border-[#c9a84c]/35 border-l-2 border-l-[#c9a84c] shadow-md'
+                  : 'bg-[#c9a84c]/06 border-[#c9a84c]/25 border-l-2 border-l-[#c9a84c]/60'
                 : isLight
-                  ? 'bg-[#6B1A2A]/04 border-[#6B1A2A]/12'
-                  : 'bg-white/05 border-white/10'
+                  ? 'bg-white border-[#6B1A2A]/12 shadow-sm'
+                  : 'bg-white/04 border-white/08'
               }
             `}>
 
-              {/* TITRE de l'étape */}
+              {/* HEADER — année + badge type */}
+              <div className="flex items-center justify-between mb-2 flex-wrap gap-2">
+                <p className={`text-[11px] font-bold tracking-widest
+                  ${step.active
+                    ? isLight ? 'text-[#c9a84c]'   : 'text-[#c9a84c]'
+                    : isLight ? 'text-[#8a4050]'   : 'text-white/35'
+                  }`}>
+                  {step.year}
+                </p>
+
+                {/* Badge type (Formation / Diplôme / Stage / Objectif) */}
+                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border
+                  ${getBadgeStyle(step.type, isLight)}`}>
+                  {step.type}
+                </span>
+              </div>
+
+              {/* TITRE */}
               <h4 className={`text-sm font-extrabold mb-1.5 transition-colors duration-500
                 ${isLight ? 'text-[#1a0508]' : 'text-white'}`}>
                 {step.title}
@@ -136,7 +191,7 @@ function Timeline({ isLight }) {
 
               {/* DESCRIPTION */}
               <p className={`text-xs leading-relaxed mb-3 transition-colors duration-500
-                ${isLight ? 'text-[#5a1825]' : 'text-white/65'}`}>
+                ${isLight ? 'text-[#3a0810]' : 'text-white/65'}`}>
                 {step.desc}
               </p>
 
@@ -146,10 +201,9 @@ function Timeline({ isLight }) {
                   <span
                     key={tag}
                     className={`px-2 py-0.5 rounded-md text-[11px] font-bold border
-                      transition-colors duration-500
                       ${isLight
-                        ? 'bg-[#c9a84c]/12 border-[#c9a84c]/28 text-[#7a5010]'
-                        : 'bg-[#c9a84c]/12 border-[#c9a84c]/28 text-[#f5d98b]'
+                        ? 'bg-[#c9a84c]/10 border-[#c9a84c]/25 text-[#7a5010]'
+                        : 'bg-[#c9a84c]/10 border-[#c9a84c]/25 text-[#f5d98b]'
                       }`}
                   >
                     {tag}
