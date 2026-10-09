@@ -5,6 +5,10 @@
    Tailwind ne connaît pas ces couleurs par défaut,
    donc on les ajoute avec @theme.
 ========================================================= */
+html {
+  font-size: 19px;
+}
+
 @theme {
   --color-bx-dark:   #0d0306;
   --color-bx-deep:   #2a0810;
@@ -20,7 +24,8 @@
    ni les animations @keyframes complexes,
    donc on les écrit ici en CSS pur.
 ========================================================= */
-body { cursor: none; }
+body { cursor: none; 
+}
 
 /* Animation du carrousel de compétences */
 @keyframes scrollLeft {

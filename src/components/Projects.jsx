@@ -97,20 +97,21 @@ function Projects({ isLight }) {
         transition={{ duration: 0.5 }}
         className="flex items-center gap-3 mb-8"
       >
-        <span className={`text-xs uppercase tracking-[3px] font-bold whitespace-nowrap
-          bg-clip-text text-transparent bg-gradient-to-r
-          ${isLight
-            ? 'from-[#c9a84c] to-[#8B2A3E]'
-            : 'from-[#c9a84c] to-[#f5d98b]'
-          }`}>
-          Projets réalisés
-        </span>
-        <div className={`flex-1 h-px bg-gradient-to-r
-          ${isLight
-            ? 'from-[#c9a84c]/50 to-transparent'
-            : 'from-[#c9a84c]/40 to-transparent'
-          }`}
-        />
+        <span className={`
+  font-black whitespace-nowrap uppercase tracking-[3px]
+  bg-clip-text text-transparent bg-gradient-to-r
+  ${isLight
+    ? 'from-[#6B1A2A] to-[#c9a84c] text-2xl'
+    : 'from-[#c9a84c] to-[#f5d98b] text-xs'
+  }`}>
+  Projets Réalisés
+</span>
+<div className={`flex-1 h-px bg-gradient-to-r
+  ${isLight
+    ? 'from-[#c9a84c] via-[#6B1A2A]/20 to-transparent h-[2px]'
+    : 'from-[#c9a84c]/40 to-transparent'
+  }`}
+/>
       </motion.div>
 
       {/* GRILLE */}
